@@ -1,6 +1,8 @@
 package com.ruoyi.project.system.news.service.impl;
 
 import java.util.List;
+import java.util.stream.Collectors;
+
 import cn.hutool.core.lang.Assert;
 import com.alibaba.fastjson.JSONArray;
 import com.ruoyi.common.utils.DateUtils;
@@ -96,6 +98,7 @@ public class NewsServiceImpl implements INewsService {
         JSONArray news = JuheApi.news();
         Assert.notEmpty(news, "获取新闻数据失败");
 
-        news.stream().map(t -> cn.hutool.core.convert.Convert.convert(News.class, t)).forEach(t -> insertNews(t));
+        List<News> newsList = news.stream().map(t -> cn.hutool.core.convert.Convert.convert(News.class, t)).collect(Collectors.toList());
+        newsList.forEach(t -> insertNews(t));
     }
 }
