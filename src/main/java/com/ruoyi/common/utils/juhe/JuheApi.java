@@ -7,7 +7,7 @@ import com.ruoyi.common.utils.http.HttpUtils;
 public class JuheApi {
 
 
-    public static void toutiao(String type){
+    public static void news(String type){
 
         String appKey = "daa5a31bec638f8b60746b36c0b285af";
         String url = "http://v.juhe.cn/toutiao/index";
@@ -21,7 +21,7 @@ public class JuheApi {
     }
 
     public static void main(String[] args) {
-        toutiao("");
+        news("");
     }
 
 }
