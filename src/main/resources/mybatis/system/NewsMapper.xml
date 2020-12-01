@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ruoyi.project.system.news.mapper.NewsMapper">
+    
+    <resultMap type="News" id="NewsResult">
+        <result property="id"    column="id"    />
+        <result property="createTime"    column="create_time"    />
+        <result property="updateTime"    column="update_time"    />
+        <result property="uniquekey"    column="uniquekey"    />
+        <result property="title"    column="title"    />
+        <result property="date"    column="date"    />
+        <result property="category"    column="category"    />
+        <result property="authorName"    column="author_name"    />
+        <result property="url"    column="url"    />
+        <result property="thumbnailPicS"    column="thumbnail_pic_s"    />
+        <result property="thumbnailPicS02"    column="thumbnail_pic_s02"    />
+        <result property="thumbnailPicS03"    column="thumbnail_pic_s03"    />
+    </resultMap>
+
+    <sql id="selectNewsVo">
+        select id, create_time, update_time, uniquekey, title, date, category, author_name, url, thumbnail_pic_s, thumbnail_pic_s02, thumbnail_pic_s03 from t_news
+    </sql>
+
+    <select id="selectNewsList" parameterType="News" resultMap="NewsResult">
+        <include refid="selectNewsVo"/>
+        <where>  
+            <if test="uniquekey != null  and uniquekey != ''"> and uniquekey = #{uniquekey}</if>
+            <if test="title != null  and title != ''"> and title = #{title}</if>
+            <if test="date != null "> and date = #{date}</if>
+            <if test="category != null  and category != ''"> and category = #{category}</if>
+            <if test="authorName != null  and authorName != ''"> and author_name like concat('%', #{authorName}, '%')</if>
+            <if test="url != null  and url != ''"> and url = #{url}</if>
+            <if test="thumbnailPicS != null  and thumbnailPicS != ''"> and thumbnail_pic_s = #{thumbnailPicS}</if>
+            <if test="thumbnailPicS02 != null  and thumbnailPicS02 != ''"> and thumbnail_pic_s02 = #{thumbnailPicS02}</if>
+            <if test="thumbnailPicS03 != null  and thumbnailPicS03 != ''"> and thumbnail_pic_s03 = #{thumbnailPicS03}</if>
+        </where>
+    </select>
+    
+    <select id="selectNewsById" parameterType="Long" resultMap="NewsResult">
+        <include refid="selectNewsVo"/>
+        where id = #{id}
+    </select>
+        
+    <insert id="insertNews" parameterType="News" useGeneratedKeys="true" keyProperty="id">
+        insert into t_news
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="createTime != null">create_time,</if>
+            <if test="updateTime != null">update_time,</if>
+            <if test="uniquekey != null">uniquekey,</if>
+            <if test="title != null">title,</if>
+            <if test="date != null">date,</if>
+            <if test="category != null">category,</if>
+            <if test="authorName != null">author_name,</if>
+            <if test="url != null">url,</if>
+            <if test="thumbnailPicS != null">thumbnail_pic_s,</if>
+            <if test="thumbnailPicS02 != null">thumbnail_pic_s02,</if>
+            <if test="thumbnailPicS03 != null">thumbnail_pic_s03,</if>
+         </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="createTime != null">#{createTime},</if>
+            <if test="updateTime != null">#{updateTime},</if>
+            <if test="uniquekey != null">#{uniquekey},</if>
+            <if test="title != null">#{title},</if>
+            <if test="date != null">#{date},</if>
+            <if test="category != null">#{category},</if>
+            <if test="authorName != null">#{authorName},</if>
+            <if test="url != null">#{url},</if>
+            <if test="thumbnailPicS != null">#{thumbnailPicS},</if>
+            <if test="thumbnailPicS02 != null">#{thumbnailPicS02},</if>
+            <if test="thumbnailPicS03 != null">#{thumbnailPicS03},</if>
+         </trim>
+    </insert>
+
+    <update id="updateNews" parameterType="News">
+        update t_news
+        <trim prefix="SET" suffixOverrides=",">
+            <if test="createTime != null">create_time = #{createTime},</if>
+            <if test="updateTime != null">update_time = #{updateTime},</if>
+            <if test="uniquekey != null">uniquekey = #{uniquekey},</if>
+            <if test="title != null">title = #{title},</if>
+            <if test="date != null">date = #{date},</if>
+            <if test="category != null">category = #{category},</if>
+            <if test="authorName != null">author_name = #{authorName},</if>
+            <if test="url != null">url = #{url},</if>
+            <if test="thumbnailPicS != null">thumbnail_pic_s = #{thumbnailPicS},</if>
+            <if test="thumbnailPicS02 != null">thumbnail_pic_s02 = #{thumbnailPicS02},</if>
+            <if test="thumbnailPicS03 != null">thumbnail_pic_s03 = #{thumbnailPicS03},</if>
+        </trim>
+        where id = #{id}
+    </update>
+
+    <delete id="deleteNewsById" parameterType="Long">
+        delete from t_news where id = #{id}
+    </delete>
+
+    <delete id="deleteNewsByIds" parameterType="String">
+        delete from t_news where id in 
+        <foreach item="id" collection="array" open="(" separator="," close=")">
+            #{id}
+        </foreach>
+    </delete>
+
+</mapper>
