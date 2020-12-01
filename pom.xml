@@ -259,6 +259,13 @@
             <version>${poi.version}</version>
         </dependency>
 
+        <!-- hutool核心包 -->
+        <dependency>
+            <groupId>cn.hutool</groupId>
+            <artifactId>hutool-core</artifactId>
+            <version>5.5.1</version>
+        </dependency>
+
     </dependencies>
 
     <build>
