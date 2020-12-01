@@ -8,6 +8,8 @@ import com.alibaba.fastjson.JSONException;
 import com.alibaba.fastjson.JSONObject;
 import com.ruoyi.common.utils.http.HttpUtils;
 
+import java.util.stream.Collectors;
+
 public class JuheApi {
 
     public static String[] newsType = {"top", "shehui", "guonei", "guoji", "yule", "tiyu", "junshi", "keji", "caijing", "shishang"};
@@ -27,7 +29,8 @@ public class JuheApi {
         String url = "http://v.juhe.cn/toutiao/index";
         Dict dict = Dict.create().set("type", StrUtil.isNotBlank(type) ? type : "").set("key", appKey);
         String param = dict.keySet().stream().map(tmp -> StrUtil.concat(true, tmp, "=", dict.getStr(tmp)))
-                .reduce((t1, t2) -> StrUtil.concat(true, t1, "&", t2)).get();
+                .collect(Collectors.joining("&"));
+//                .reduce((t1, t2) -> StrUtil.concat(true, t1, "&", t2)).get();
 
         String resultVal = HttpUtils.sendGet(url, param);
         try {
@@ -41,6 +44,10 @@ public class JuheApi {
 
     public static JSONArray news() {
         return news(newsType[0]);
+    }
+
+    public static void main(String[] args) {
+        System.out.println(news().toJSONString());
     }
 
 }

@@ -93,6 +93,10 @@ public class NewsServiceImpl implements INewsService {
         return newsMapper.deleteNewsById(id);
     }
 
+    /**
+     * 获取头条数据
+     * 推送微信
+     */
     @Override
     public void downloadNewsOfPush() {
         JSONArray news = JuheApi.news();
