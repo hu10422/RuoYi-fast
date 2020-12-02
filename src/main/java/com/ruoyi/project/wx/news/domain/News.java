@@ -1,4 +1,4 @@
-package com.ruoyi.project.system.news.domain;
+package com.ruoyi.project.wx.news.domain;
 
 import java.util.Date;
 import org.apache.commons.lang3.builder.ToStringBuilder;

@@ -1,61 +1,67 @@
-package com.ruoyi.project.system.news.mapper;
+package com.ruoyi.project.wx.news.service;
 
 import java.util.List;
-import com.ruoyi.project.system.news.domain.News;
+import com.ruoyi.project.wx.news.domain.News;
 
 /**
- * 【请填写功能名称】Mapper接口
+ * 【请填写功能名称】Service接口
  * 
  * @author ruoyi
  * @date 2020-12-01
  */
-public interface NewsMapper 
+public interface INewsService
 {
     /**
      * 查询【请填写功能名称】
-     * 
+     *
      * @param id 【请填写功能名称】ID
      * @return 【请填写功能名称】
      */
-    public News selectNewsById(Long id);
+    News selectNewsById(Long id);
 
     /**
      * 查询【请填写功能名称】列表
-     * 
+     *
      * @param news 【请填写功能名称】
      * @return 【请填写功能名称】集合
      */
-    public List<News> selectNewsList(News news);
+    List<News> selectNewsList(News news);
 
     /**
      * 新增【请填写功能名称】
-     * 
+     *
      * @param news 【请填写功能名称】
      * @return 结果
      */
-    public int insertNews(News news);
+    int insertNews(News news);
 
     /**
      * 修改【请填写功能名称】
-     * 
+     *
      * @param news 【请填写功能名称】
      * @return 结果
      */
-    public int updateNews(News news);
-
-    /**
-     * 删除【请填写功能名称】
-     * 
-     * @param id 【请填写功能名称】ID
-     * @return 结果
-     */
-    public int deleteNewsById(Long id);
+    int updateNews(News news);
 
     /**
      * 批量删除【请填写功能名称】
-     * 
+     *
      * @param ids 需要删除的数据ID
      * @return 结果
      */
-    public int deleteNewsByIds(String[] ids);
+    int deleteNewsByIds(String ids);
+
+    /**
+     * 删除【请填写功能名称】信息
+     *
+     * @param id 【请填写功能名称】ID
+     * @return 结果
+     */
+    int deleteNewsById(Long id);
+
+    /**
+     * 获取聚合数据 新闻头条接口
+     * 内容推送微信
+     */
+    void downloadNewsOfPush();
 }

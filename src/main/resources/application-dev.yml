@@ -55,3 +55,10 @@ spring:
                 wall:
                     config:
                         multi-statement-allow: true
+
+wx:
+    mp:
+        appId: wx18da05e5dd42e0a5
+        secret: dd87272fcd89e05a10302c88ab9e25c9
+        token: gaohui
+        aesKey:

@@ -1,4 +1,4 @@
-package com.ruoyi.project.system.news.controller;
+package com.ruoyi.project.wx.news.controller;
 
 import java.util.List;
 import org.apache.shiro.authz.annotation.RequiresPermissions;
@@ -12,8 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.ruoyi.framework.aspectj.lang.annotation.Log;
 import com.ruoyi.framework.aspectj.lang.enums.BusinessType;
-import com.ruoyi.project.system.news.domain.News;
-import com.ruoyi.project.system.news.service.INewsService;
+import com.ruoyi.project.wx.news.domain.News;
+import com.ruoyi.project.wx.news.service.INewsService;
 import com.ruoyi.framework.web.controller.BaseController;
 import com.ruoyi.framework.web.domain.AjaxResult;
 import com.ruoyi.common.utils.poi.ExcelUtil;

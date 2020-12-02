@@ -1,6 +1,6 @@
 package com.ruoyi.project.monitor.job.task;
 
-import com.ruoyi.project.system.news.service.INewsService;
+import com.ruoyi.project.wx.news.service.INewsService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
