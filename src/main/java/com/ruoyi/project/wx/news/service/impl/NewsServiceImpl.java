@@ -168,6 +168,7 @@ public class NewsServiceImpl implements INewsService {
             
             WxMpMassSendResult wxMpMassSendResult = wxService.get().getMassMessageService().massGroupMessageSend(wxMpMassTagMessage);
             log.info("群发图文消息：" + JSONUtils.toJSONString(wxMpMassSendResult));
+            System.out.println();
 
         } catch (Exception e) {
             e.printStackTrace();
